@@ -1,0 +1,24 @@
+<project name="Bus_reservation" basedir="." default="all">
+	<target name="all">
+		<antcall target="clean"/>
+		<antcall target="build"/>
+	</target>
+	<target name="clean">
+		<delete dir="output"/>
+		<delete dir="build"/>
+	</target>
+	<target name="build">
+		<mkdir dir="${basedir}/output"/>
+		<mkdir dir="${basedir}/build"/>
+		<javac destdir="${basedir}/build" srcdir="${basedir}/src" includes="**/*.java">
+		</javac>
+		<jar destfile="${basedir}/output/busreservation.jar" basedir="${basedir}/build">
+			<manifest>
+				<attribute name="Main-Class" value="bus.reservation.startup.BusReservation"/>
+			</manifest>
+		</jar>
+		<copy todir="${basedir}/output">
+			<fileset dir="${basedir}" includes="data/**/*.*" />
+		</copy>
+	</target>
+</project>
