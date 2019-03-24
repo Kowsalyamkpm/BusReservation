@@ -159,12 +159,7 @@ public class BusReservation
 
 	private static Integer getAvailableSeats(Bus selectedBus, Date travelDate)
 	{
-		File busDateDir = new File("/home/kowsalya/eclipse-workspace/Bus_reservation/busDir");
-		if(!busDateDir.exists())
-		{
-			busDateDir.mkdirs();
-		}
-		File busDateFile = new File("/home/kowsalya/eclipse-workspace/Bus_reservation/busDir/"+selectedBus.getBusName() + "_"+ travelDate + ".txt");
+		File busDateFile = new File("data" + File.separator + selectedBus.getBusName() + "_"+ travelDate + ".txt");
 		if(!busDateFile.exists())
 		{
 			return selectedBus.getCapacity();
